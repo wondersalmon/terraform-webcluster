@@ -65,5 +65,5 @@ You can check the work of the balancer and health endpoints with commands in the
 ```bash
     curl localhost:6000
     curl localhost:6000/health
-    curl localhost:1000X/health # Where X is the webserver number
+    curl localhost:700X/health # Where X is the webserver number
 ```
