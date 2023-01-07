@@ -1,0 +1,27 @@
+upstream webservers {
+%{ for host in hosts ~}
+    server webserver${host}:700${host};
+%{ endfor ~}
+}
+
+server {
+
+listen 80 default_server;
+
+server_name  _;
+
+location = /favicon.ico {
+  log_not_found off;
+}
+
+location / {
+    return 200 "load-balancer\n";
+    proxy_pass http://webservers;
+}
+
+location /health {
+        access_log off;
+        add_header 'Content-Type' 'text/plain';
+        return 200 "load-balancer\n";
+    }
+}
