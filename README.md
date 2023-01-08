@@ -55,7 +55,7 @@ Command to start semi-automatic installation:
    - Launching a cluster with custom parameters `terraform apply -var "webservers_count=$webservers_count" -var "webserver_version=$webserver_version" -var "loadbalancer_version=$loadbalancer_version"`
 (Specify custom parameters instead of variable values)
    - Deleting a cluster of `terraform destroy`
-   - Check status `curl -s localhost:5000/health`
+   - Check status `curl -s localhost:8080/health`
 
 </details>
 
