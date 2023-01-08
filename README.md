@@ -4,11 +4,11 @@
 ![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white)
 ### Task:
  This exercise should be performed locally using Terraform and Docker. Using Terraform and any docker provider, create the following cluster:
-> 1. Run X web-servers that serves a single static page with a message: Hello from web-server (1..X)
-> 2. Run a load-balancer in front of the web-servers that performs round-robin load balancing
-> 3. On both web-servers and load-balancer, add a health endpoint returning the name of the component (web-server-(1..X) / load-balancer).
-> 4. Create support for setting different versions for the web-server and load-balancer
-> 5. Write a shell script for install(using git pull from GitHub)/start/stop/status of the cluster
+- [x] Run X web-servers that serves a single static page with a message: Hello from web-server (1..X)
+- [x] Run a load-balancer in front of the web-servers that performs round-robin load balancing
+- [x] On both web-servers and load-balancer, add a health endpoint returning the name of the component (web-server-(1..X) / load-balancer).
+- [x] Create support for setting different versions for the web-server and load-balancer
+- [x] Write a shell script for install(using git pull from GitHub)/start/stop/status of the cluster
 
 ### Preparation:
 #### Make sure you have docker and curl installed on your computer, install them if needed.
