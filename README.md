@@ -30,8 +30,15 @@ Run the script `manager.sh` using `./manager.sh` command if you are sure that te
 
 In this script, the terraform installation functionality has been cut out - it only downloads the project, initializes the terraform and displays the menu for working with the project.
 
-Both installation scripts are in the [Install.zip](https://github.com/wondersalmon/average-terraform-project/raw/main/install.zip) archive You can download it instead of manually cloning the repository.
-To make the script executable, you need to write `chmod +x ./fullauto.sh` or `chmod +x ./manager.sh` in the terminal
+Scripts are located in the scripts folder. You can download and run them manually or use a terminal command to download and run the script immediately.
+
+Command to run the automatic installation: 
+
+`curl https://raw.githubusercontent.com/wondersalmon/average-terraform-project/main/scripts/fullauto.sh >> fullauto.sh && chmod +x fullauto.sh && ./fullauto.sh`
+
+Command to start semi-automatic installation: 
+
+`curl https://raw.githubusercontent.com/wondersalmon/average-terraform-project/main/scripts/manage.sh >> manage.sh && chmod +x manage.sh && ./manage.sh`
 
 #### Manual install:
 1. Copy git clone repository `https://github.com/wondersalmon/average-terraform-project.git`
