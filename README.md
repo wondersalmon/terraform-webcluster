@@ -36,7 +36,7 @@ To make the script executable, you need to write `chmod +x ./fullauto.sh` or `ch
 #### Manual install:
 1. Copy git clone repository `https://github.com/wondersalmon/average-terraform-project.git`
 
-2. Go to the project folder `cd average-terraform-project`
+2. Go to the project folder `cd average-terraform-project/terraform`
 
 3. Run command `terraform init`
 
@@ -63,8 +63,8 @@ The servers are using the `NGINX` image. **Use Dockertags to specify the version
 ### Testing:
 You can check the work of the balancer and health endpoints with commands in the terminal
 ```bash
-    curl localhost:6000
-    curl localhost:6000/health
+    curl localhost:8080
+    curl localhost:8080/health
     curl localhost:700X # Where X is the webserver number
     curl localhost:700X/health # Where X is the webserver number
 ```

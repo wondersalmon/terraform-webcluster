@@ -1,10 +1,15 @@
+resource "docker_image" "nginx" {
+  name = "nginx:${var.loadbalancer_version}"
+  keep_locally = false
+}
+
 locals {
   module_path     = abspath(path.module)
   webserver_range = range(1, var.webservers_count+1)
 }
 
 resource "local_file" "upstream" {
-  content     = templatefile("./upstream.tftpl", {
+  content     = templatefile("../loadbalancer/upstream.tftpl", {
     hosts = local.webserver_range
   })
   filename = "./upstream.conf"
@@ -14,6 +19,7 @@ resource "docker_container" "load-balancer" {
   name = "loadbalancer"
   hostname = "load-balancer"
   image = docker_image.nginx.image_id
+  depends_on = [docker_container.webserver,local_file.upstream]
   volumes {
     container_path  = "/etc/nginx/conf.d/default.conf"
     host_path =  "${local.module_path}/upstream.conf"

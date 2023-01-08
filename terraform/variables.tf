@@ -25,7 +25,7 @@ variable "webserver_port_start" {
 variable "loadbalancer_exposed_port" {
   description = "Port for loadbalancer"
   type        = number
-  default     = "6000"
+  default     = "8080"
 }
 
 variable "webservers_count" {
