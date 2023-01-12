@@ -4,5 +4,5 @@
 crash.log
 *_override.tf
 *_override.tf.json
-upstream.conf
+lb-nginx-config.conf
 .terraform.lock.hcl

@@ -1,77 +1,45 @@
 # Average-terraform-project
-*Project files will be uploaded as they are ready.*
 
 ![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white)
-### Task:
- This exercise should be performed locally using Terraform and Docker. Using Terraform and any docker provider, create the following cluster:
-- [x] Run X web-servers that serves a single static page with a message: Hello from web-server (1..X)
-- [x] Run a load-balancer in front of the web-servers that performs round-robin load balancing
-- [x] On both web-servers and load-balancer, add a health endpoint returning the name of the component (web-server-(1..X) / load-balancer).
-- [x] Create support for setting different versions for the web-server and load-balancer
-- [x] Write a shell script for install(using git pull from GitHub)/start/stop/status of the cluster
 
-### Preparation:
-#### Make sure you have docker and curl installed on your computer, install them if needed.
+This project uses Terraform and Docker to create a cluster of web servers and a load balancer for round-robin load balancing. The web servers serve a static page that displays a message "**Hello from web-server (1..X)**". The project also includes a health endpoint on both the web servers and load balancer that returns the name of the component. The project supports setting different versions for the web servers and load balancer.
 
-You can check the installation in the terminal with the commands `docker --version` for docker and `curl --version` for curl. 
-If the programs are installed - the terminal will tell you the version of the program, if not - it will report an error
+### Installation
 
+#### Fully automatic installation
 
-
-### Installation:
-#### Fully automatic installation:
-Download and run the script `fullauto.sh` (command `./fullauto.sh` in the terminal).
-
-The script will check if terraform is installed, and if not, it will install itself depending on your package manager.
+1. Download and run the script `fullauto.sh`  by running the command `curl https://raw.githubusercontent.com/wondersalmon/average-terraform-project/main/scripts/fullauto.sh >> fullauto.sh && chmod +x fullauto.sh && ./fullauto.sh` in the terminal.
+2. The script will check if Terraform is installed, and if not, it will install it based on your package manager.
+3. The script will then download the project, go to the project folder, initialize Terraform, and display a menu for working with the project.
 
 Then the script will download the project, go to the folder with the project and initialize the terraform, and displays the menu for working with the project.
-#### Semi-automatic installation:
-Run the script `manager.sh` using `./manager.sh` command if you are sure that terraform is already installed on your computer.
 
-In this script, the terraform installation functionality has been cut out - it only downloads the project, initializes the terraform and displays the menu for working with the project.
+#### Semi-automatic installation
 
-Scripts are located in the scripts folder. You can download and run them manually or use a terminal command to download and run the script immediately.
+1. Run the script `manager.sh`by running the command`curl https://raw.githubusercontent.com/wondersalmon/average-terraform-project/main/scripts/manage.sh >> manage.sh && chmod +x manage.sh && ./manage.sh` in the terminal.
+2. The script will download the project, initialize Terraform, and display a menu for working with the project.
 
-Command to run the automatic installation: 
+#### Manual install
 
-`curl https://raw.githubusercontent.com/wondersalmon/average-terraform-project/main/scripts/fullauto.sh >> fullauto.sh && chmod +x fullauto.sh && ./fullauto.sh`
+1. Clone the repository by running the command `git clone https://github.com/wondersalmon/average-terraform-project.git` in the terminal.
+2. Navigate to the project folder `cd average-terraform-project/terraform`
+3. Initialize Terraform by running the command `terraform init`
 
-Command to start semi-automatic installation: 
+#### Working with the cluster
 
-`curl https://raw.githubusercontent.com/wondersalmon/average-terraform-project/main/scripts/manage.sh >> manage.sh && chmod +x manage.sh && ./manage.sh`
+The cluster can be managed using the following Terraform commands:
 
-#### Manual install:
-1. Copy git clone repository `https://github.com/wondersalmon/average-terraform-project.git`
+- To launch the cluster, run the command `terraform apply`.
+- To launch the cluster with custom parameters, run the command `terraform apply -var "webservers_count=$webservers_count" -var "webserver_version=$webserver_version" -var "loadbalancer_version=$loadbalancer_version"` (specify custom parameters instead of variable values).
+- To delete the cluster, run the command `terraform destroy`.
+- To check the status of the cluster, run the command `curl -s localhost:8080/health`.
 
-2. Go to the project folder `cd average-terraform-project/terraform`
+### Cluster manager overview
 
-3. Run command `terraform init`
+In addition to manual management, the project includes a Cluster Manager that allows you to start, stop, and check the status of the cluster. The Cluster Manager can be accessed by running the script `manager.sh` after the project has been installed.
 
-##### Working with the cluster manually:
-<details><summary>Command List:</summary>
+Note: `fullauto.sh` script will install Terraform, download the project and run `manager.sh` script.
 
-   - Launching a cluster - `terraform apply`
+### Conclusion
 
-   - Launching a cluster with custom parameters `terraform apply -var "webservers_count=$webservers_count" -var "webserver_version=$webserver_version" -var "loadbalancer_version=$loadbalancer_version"`
-(Specify custom parameters instead of variable values)
-   - Deleting a cluster of `terraform destroy`
-   - Check status `curl -s localhost:8080/health`
-
-</details>
-
-### Cluster manager overview:
-1.`Start Cluster` allows you to start a cluster with custom parameters (version of the web server and load balancer and number of web servers) or (if no parameters have been entered) starts the cluster with default parameters.
-
-The servers are using the `NGINX` image. **Use Dockertags to specify the version** (you can find a list of possible tags in [Dockerhub](https://hub.docker.com/_/nginx)).
-
-2.`Stop cluster` destroy the cluster by `terraform destroy`.
-
-3.`Check status` displays the balancer's health status.
-### Testing:
-You can check the work of the balancer and health endpoints with commands in the terminal
-```bash
-    curl localhost:8080
-    curl localhost:8080/health
-    curl localhost:700X # Where X is the webserver number
-    curl localhost:700X/health # Where X is the webserver number
-```
+This project provides a convenient and straightforward way to set up a cluster of web servers and a load balancer using Terraform and Docker. The project also includes a health endpoint and support for different versions of the web servers and load balancer. The Cluster Manager also makes it easy to start, stop, and check the status of cluster.
