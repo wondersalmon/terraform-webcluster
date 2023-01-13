@@ -6,3 +6,4 @@ crash.log
 *_override.tf.json
 lb-nginx-config.conf
 .terraform.lock.hcl
+manifest.json

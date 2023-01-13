@@ -16,7 +16,7 @@ Then the script will download the project, go to the folder with the project and
 
 #### Semi-automatic installation
 
-1. Run the script `manager.sh`by running the command`curl https://raw.githubusercontent.com/wondersalmon/average-terraform-project/main/scripts/manage.sh >> manage.sh && chmod +x manage.sh && ./manage.sh` in the terminal.
+1. Run the script `manager.sh` by running the command`curl https://raw.githubusercontent.com/wondersalmon/average-terraform-project/main/scripts/manage.sh >> manage.sh && chmod +x manage.sh && ./manage.sh` in the terminal.
 2. The script will download the project, initialize Terraform, and display a menu for working with the project.
 
 #### Manual install
