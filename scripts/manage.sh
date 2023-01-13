@@ -1,18 +1,14 @@
-################ Git pull & terraform init #################
+# Processing the repository, initializing the terraform
 echo -e "\e[1m\e[34mCloning repository...\e[0m"
 git clone https://github.com/wondersalmon/average-terraform-project.git
-
 echo -e "\e[1m\e[34mEntering repository folder...\e[0m"
 cd average-terraform-project/terraform
-
 echo -e "\e[1m\e[32mInitializing Terraform...\e[0m"
 terraform init
-
-sleep 1s
 echo
 echo -e "\e[1m\e[36mTerraform ready to work!\e[0m"
 echo "----------------------------------------"
-####################### Magic of bash ###########################
+# Starting the Project Manager
 function start_cluster() {
 if [ -z "$webserver_version" ]; then
 webserver_version=latest
@@ -25,32 +21,28 @@ webservers_count=3
 fi
 terraform apply -var "webservers_count=$webservers_count" -var "webserver_version=$webserver_version" -var "loadbalancer_version=$loadbalancer_version"
 if [ $? -eq 0 ]; then
-echo -e "\033[0;32m[OK]\033[0m Cluster started successfully (づ｡◕‿‿◕｡)づ"
+echo -e "\033[0;32m[OK]\033[0m Cluster started successfully"
 else
-echo -e "\033[0;31m[ERROR]\033[0m Error starting cluster ༼ つ ◕_◕ ༽つ"
+echo -e "\033[0;31m[ERROR]\033[0m Error starting cluster"
 exit 1
 fi
 }
-
 function stop_cluster() {
   terraform destroy
   if [ $? -eq 0 ]; then
-    echo -e "\033[0;32m[OK]\033[0m Cluster stopped successfully ( ͡° ͜ʖ ͡°)"
+    echo -e "\033[0;32m[OK]\033[0m Cluster stopped successfully"
   else
-    echo -e "\033[0;31m[ERROR]\033[0m Error stopping cluster ಠ_ಥ"
+    echo -e "\033[0;31m[ERROR]\033[0m Error stopping cluster"
     exit 1
   fi
 }
-
 function status_cluster() {
   if curl -s localhost:8080/health > /dev/null; then
-    echo -e "\033[0;32m[OK]\033[0m Load balancer is healthy, cluster status: \033[0;32mGREEN\033[0m (⌐■_■)"
+    echo -e "\033[0;32m[OK]\033[0m Load balancer is healthy, cluster status: \033[0;32mGREEN\033[0m "
   else
-    echo -e "\033[0;31m[ERROR]\033[0m Load balancer is unhealthy, cluster status: \033[0;31mRED\033[0m ╚(ಠ_ಠ)=┐"
+    echo -e "\033[0;31m[ERROR]\033[0m Load balancer is unhealthy, cluster status: \033[0;31mRED\033[0m "
   fi
 }
-
-############################ Wonders of choice ##################################
 echo -e "\033[1mChoose Your Destiny:\033[0m "
 select option in "Start cluster" "Stop cluster" "Check status" "Quit"; do
   case $option in
@@ -73,7 +65,7 @@ select option in "Start cluster" "Stop cluster" "Check status" "Quit"; do
       break
       ;;
     "Quit")
-      echo -e "\033[95mSee ya\033[0m♥‿♥"
+      echo -e "\033[95mSee ya\033[0m"
       break
       ;;
     *)
