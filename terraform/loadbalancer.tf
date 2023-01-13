@@ -10,10 +10,10 @@ locals {
 }
 
 resource "local_file" "upstream" {
-  content     = templatefile("lb-nginx-config.tftpl", {
+  content     = templatefile("loadbalancer-config.tftpl", {
     hosts = local.webserver_range
   })
-  filename = "./lb-nginx-config.conf"
+  filename = "./loadbalancer-config.conf"
 }
 
 resource "docker_container" "load-balancer" {
@@ -23,7 +23,7 @@ resource "docker_container" "load-balancer" {
   depends_on = [docker_container.webserver,local_file.upstream]
   volumes {
     container_path  = "/etc/nginx/conf.d/default.conf"
-    host_path =  "${local.module_path}/lb-nginx-config.conf"
+    host_path =  "${local.module_path}/loadbalancer-config.conf"
     read_only = true
   }
   networks_advanced {

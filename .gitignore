@@ -4,6 +4,7 @@
 crash.log
 *_override.tf
 *_override.tf.json
-lb-nginx-config.conf
+loadbalancer-config.conf
 .terraform.lock.hcl
 manifest.json
+.infracost
