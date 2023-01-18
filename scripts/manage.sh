@@ -1,8 +1,8 @@
 # Processing the repository, initializing the terraform
 echo -e "\e[1m\e[34mCloning repository...\e[0m"
-git clone https://github.com/wondersalmon/average-terraform-project.git
+git clone https://github.com/wondersalmon/terraform-webcluster.git
 echo -e "\e[1m\e[34mEntering repository folder...\e[0m"
-cd average-terraform-project/terraform
+cd terraform-webcluster/terraform
 echo -e "\e[1m\e[32mInitializing Terraform...\e[0m"
 terraform init
 echo
