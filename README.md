@@ -8,7 +8,7 @@ This project uses Terraform and Docker to create a cluster of web servers and a 
 
 #### Fully automatic installation
 
-1. Download and run the script `fullauto.sh`  by running the command `curl https://raw.githubusercontent.com/wondersalmon/average-terraform-project/main/scripts/fullauto.sh >> fullauto.sh && chmod +x fullauto.sh && ./fullauto.sh` in the terminal.
+1. Download and run the script `fullauto.sh`  by running the command `curl https://raw.githubusercontent.com/wondersalmon/terraform-webcluster/main/scripts/fullauto.sh >> fullauto.sh && chmod +x fullauto.sh && ./fullauto.sh` in the terminal.
 2. The script will check if Terraform is installed, and if not, it will install it based on your package manager.
 3. The script will then download the project, go to the project folder, initialize Terraform, and display a menu for working with the project.
 
@@ -16,13 +16,13 @@ Then the script will download the project, go to the folder with the project and
 
 #### Semi-automatic installation
 
-1. Run the script `manager.sh` by running the command`curl https://raw.githubusercontent.com/wondersalmon/average-terraform-project/main/scripts/manage.sh >> manage.sh && chmod +x manage.sh && ./manage.sh` in the terminal.
+1. Run the script `manager.sh` by running the command`curl https://raw.githubusercontent.com/wondersalmon/terraform-webcluster/main/scripts/manage.sh >> manage.sh && chmod +x manage.sh && ./manage.sh` in the terminal.
 2. The script will download the project, initialize Terraform, and display a menu for working with the project.
 
 #### Manual install
 
-1. Clone the repository by running the command `git clone https://github.com/wondersalmon/average-terraform-project.git` in the terminal.
-2. Navigate to the project folder `cd average-terraform-project/terraform`
+1. Clone the repository by running the command `git clone https://github.com/wondersalmon/terraform-webcluster.git` in the terminal.
+2. Navigate to the project folder `cd terraform-webcluster/terraform`
 3. Initialize Terraform by running the command `terraform init`
 
 #### Working with the cluster
